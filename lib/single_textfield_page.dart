@@ -3,16 +3,15 @@ import 'package:flutter/services.dart';
 import 'package:flutter_native_text_input/flutter_native_text_input.dart';
 import 'package:keyboard_name/keyboard_name.dart';
 
-class FrozenKeyboardPage extends StatefulWidget {
-  const FrozenKeyboardPage({Key? key}) : super(key: key);
+class SingleTextFieldPage extends StatefulWidget {
+  const SingleTextFieldPage({Key? key}) : super(key: key);
 
   @override
-  State<FrozenKeyboardPage> createState() => _FrozenKeyboardPageState();
+  State<SingleTextFieldPage> createState() => _SingleTextFieldPageState();
 }
 
-class _FrozenKeyboardPageState extends State<FrozenKeyboardPage> {
+class _SingleTextFieldPageState extends State<SingleTextFieldPage> {
   FocusNode nodeOne = FocusNode();
-  FocusNode nodeTwo = FocusNode();
 
   customFocusNode() async {
     String? keyboardVendor = await KeyboardName.getVendorName;
@@ -41,7 +40,6 @@ class _FrozenKeyboardPageState extends State<FrozenKeyboardPage> {
 
   _asssignNode() async {
     nodeOne = await customFocusNode();
-    nodeTwo = await customFocusNode();
     setState(() {});
   }
 
@@ -64,14 +62,13 @@ class _FrozenKeyboardPageState extends State<FrozenKeyboardPage> {
             SizedBox(
               height: 16,
             ),
-            TextField(
-              focusNode: nodeTwo,
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(), label: Text('With Delay')),
+            Container(
+              height: 1,
+              width: 1,
+              child: TextField(
+              ),
             ),
-            SizedBox(
-              height: 24,
-            ),
+
           ],
         ),
       ),

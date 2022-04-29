@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:frozen_keyboard_error/frozen_keyboard_page.dart';
+import 'package:frozen_keyboard_error/multiple_textfiled_page.dart';
+
+import 'home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,7 +27,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: FrozenKeyboardPage(),
+      home: HomePage(),
     );
   }
 }
