@@ -12,6 +12,7 @@ class SingleTextFieldPage extends StatefulWidget {
 
 class _SingleTextFieldPageState extends State<SingleTextFieldPage> {
   FocusNode nodeOne = FocusNode();
+  FocusNode nodeTwo = FocusNode();
 
   customFocusNode() async {
     String? keyboardVendor = await KeyboardName.getVendorName;
@@ -40,6 +41,7 @@ class _SingleTextFieldPageState extends State<SingleTextFieldPage> {
 
   _asssignNode() async {
     nodeOne = await customFocusNode();
+    nodeTwo = await customFocusNode();
     setState(() {});
   }
 
@@ -56,19 +58,25 @@ class _SingleTextFieldPageState extends State<SingleTextFieldPage> {
           children: [
             TextField(
               focusNode: nodeOne,
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(), label: Text('With Delay')),
-            ),
-            SizedBox(
-              height: 16,
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(), label: Text('Text Field One')),
             ),
             Container(
-              height: 1,
-              width: 1,
-              child: TextField(
-              ),
+              height: 0.1,
+              width: 0.1,
+              child: const TextField(),
             ),
-
+            const SizedBox(height: 16,),
+            TextField(
+              focusNode: nodeTwo,
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(), label: Text('Text Field Two')),
+            ),
+            Container(
+              height: 0.1,
+              width: 0.1,
+              child: TextField(),
+            ),
           ],
         ),
       ),
